@@ -1,4 +1,4 @@
-# Coding Challenge for Web Engineers
+# Coding Challenge for Full Stack Engineers
 
 ## Requirements
 - React 
