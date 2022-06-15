@@ -15,7 +15,7 @@ The purpose of this code challenge is to build an admin dashboard with authentic
 1. Clone this repository and create your own GitHub repository.
 2. Push your git repository to GitHub.
 3. Initialize a new React project and Node.JS project. 
-4. The website should call the Node.JS API and not interact with the database directly.
+4. The website should make API calls to the Node.JS app and not interact with the database directly.
 5. Create the login page with the following features: 
    - Text inputs for email and password.
    - Submit button.
