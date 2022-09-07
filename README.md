@@ -2,12 +2,12 @@
 
 ## Requirements
 - React 
-- Redux 
+- Any state management library. Redux is preferred, but no penalty for using other state management libraries. But no props drilling
 - MongoDB or Firestore database
 - Node.JS
 - Express.JS
 
-You have 7 days upon receiving this test to complete and submit it back to us
+You have 14 days upon receiving this test to complete and submit it back to us
 
 ## Instructions
 The purpose of this code challenge is to build an admin dashboard with authentication protection and the ability to add new products.
