@@ -2,7 +2,7 @@
 
 ## Requirements
 - React 
-- Any state management library. Redux is preferred, but no penalty for using other state management libraries. But no props drilling
+- Any state management library. Redux is preferred, but no penalty for using other state management libraries. No props drilling
 - MongoDB or Firestore database
 - Node.JS
 - Express.JS
