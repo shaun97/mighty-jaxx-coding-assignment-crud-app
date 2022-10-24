@@ -99,7 +99,6 @@ export default function Login() {
                         Sign In
                     </button>
                 )}
-
                 <p
                     className="text-center"
                     onClick={() => setIsLogin(!isSignup)}
