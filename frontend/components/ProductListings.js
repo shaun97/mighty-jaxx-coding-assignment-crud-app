@@ -37,7 +37,6 @@ export default function ProductListings() {
         async function fetchInitialProducts() {
             let retrievedProducts = await fetchProducts();
             setProducts(retrievedProducts);
-            console.log(retrievedProducts);
         }
         fetchInitialProducts();
     }, [isAddItem, searchQuery]);

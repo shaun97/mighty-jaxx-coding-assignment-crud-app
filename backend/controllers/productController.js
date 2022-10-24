@@ -19,7 +19,6 @@ exports.createProduct = async (req, res) => {
 // not working
 exports.editProduct = async (req, res) => {
     let _id = req.query._id;
-    console.log(_id);
     try {
         if (!_id) {
             throw "Please specify an SKU";
@@ -31,7 +30,6 @@ exports.editProduct = async (req, res) => {
             },
             req.body
         );
-        console.log(updatedProduct);
 
         if (!updatedProduct) {
             throw "Please key in a valid SKU";

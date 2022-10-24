@@ -113,7 +113,6 @@ export const signup = async (dispatch, signpPayload) => {
         let data = await response.json();
 
         if (data.token) {
-            console.log("success");
             dispatch({
                 type: "LOGIN_SUCCESS",
                 payload: data,

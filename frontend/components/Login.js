@@ -17,7 +17,6 @@ export default function Login() {
         let payload = { email, password };
         try {
             let res = await login(dispatch, payload);
-            console.log(res);
             if (!res) return;
             router.push("/dashboard");
         } catch (err) {
