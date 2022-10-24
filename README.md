@@ -22,14 +22,5 @@ Hosting
 
 Feel free to use any hosting providers that support the above technologies
 
-## Requirements
-- React
-- Any state management library. Redux is preferred, but no penalty for using other state management libraries. No props drilling
-- MongoDB or Firestore database
-- Node.JS
-- Express.JS
-
-You have 14 days upon receiving this test to complete and submit it back to us
-
 ## Instructions
 The respective source folders for both parts contains instructions on how to set up each service.
