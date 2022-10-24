@@ -48,7 +48,7 @@ export default function ProductCard({
                     <Image
                         className="rounded-md"
                         src={img_url}
-                        alt="Picture of the author"
+                        alt=""
                         width={125}
                         height={125}
                     />

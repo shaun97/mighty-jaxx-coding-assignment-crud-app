@@ -80,7 +80,7 @@ export default function ProductEditCard({
                     img_url: uploadedImageURL,
                 }),
             };
-
+            console.log(_id, newSku, newTitle, uploadedImageURL);
             let res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_ENDPOINT}/products?` +
                     new URLSearchParams({
