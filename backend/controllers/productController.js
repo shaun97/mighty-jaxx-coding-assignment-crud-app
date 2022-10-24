@@ -18,17 +18,19 @@ exports.createProduct = async (req, res) => {
 
 // not working
 exports.editProduct = async (req, res) => {
+    let _id = req.query._id;
     try {
-        const { sku, title, img_url } = req.body;
-
-        if (!sku) {
+        if (!_id) {
             throw "Please specify an SKU";
         }
 
         const updatedProduct = await Product.findOneAndUpdate(
-            { sku: sku },
+            {
+                query: { _id: _id },
+            },
             req.body
         );
+        console.log("test");
 
         if (!updatedProduct) {
             throw "Please key in a valid SKU";
@@ -48,9 +50,10 @@ exports.editProduct = async (req, res) => {
 
 exports.getAllProducts = async (req, res) => {
     query = req.query.search ?? "";
+    console.log(query);
     try {
         const products = await Product.find({
-            sku: { $regex: query, $options: "i" },
+            title: { $regex: query, $options: "i" },
         });
 
         res.status(200).json({
@@ -66,9 +69,9 @@ exports.getAllProducts = async (req, res) => {
 };
 
 exports.deleteProduct = async (req, res) => {
-    let productSku = req.query.sku;
+    let _id = req.query._id;
     try {
-        const deletedProduct = await Product.deleteOne({ sku: productSku }); //contains the id as well
+        const deletedProduct = await Product.deleteOne({ _id: _id }); //contains the id as well
 
         if (deletedProduct.deletedCount == 0) {
             throw "Failed to delete the specified product";
