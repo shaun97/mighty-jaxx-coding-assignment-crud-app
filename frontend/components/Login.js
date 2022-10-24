@@ -104,10 +104,7 @@ export default function Login() {
                     className="text-center"
                     onClick={() => setIsLogin(!isSignup)}
                 >
-                    <a
-                        className="text-blue-600 text-sm font-light hover:underline"
-                        // href="https://www.kindacode.com"
-                    >
+                    <a className="text-blue-600 text-sm font-light hover:underline">
                         Click here to {isSignup ? "sign in" : "sign up"}
                     </a>
                 </p>
