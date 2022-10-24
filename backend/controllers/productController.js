@@ -30,7 +30,6 @@ exports.editProduct = async (req, res) => {
             },
             req.body
         );
-        console.log("test");
 
         if (!updatedProduct) {
             throw "Please key in a valid SKU";
@@ -50,7 +49,7 @@ exports.editProduct = async (req, res) => {
 
 exports.getAllProducts = async (req, res) => {
     query = req.query.search ?? "";
-    console.log(query);
+
     try {
         const products = await Product.find({
             title: { $regex: query, $options: "i" },

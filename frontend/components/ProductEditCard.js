@@ -18,6 +18,7 @@ export default function ProductEditCard({
     const [newTitle, setTitle] = useState(title);
     const [newSku, setSku] = useState(sku);
     const [newImg_url, setImg_url] = useState(img_url);
+    const [resMessage, setResMessage] = useState("");
     const { token } = useContext(UserContext);
 
     const storage = getStorage(clientApp);
@@ -57,6 +58,9 @@ export default function ProductEditCard({
                 `${process.env.NEXT_PUBLIC_API_ENDPOINT}/products`,
                 requestOptions
             );
+            if (res) {
+                setResMessage("Product successfully added");
+            }
             setIsEdit(false);
         } else {
             const requestOptions = {
@@ -71,6 +75,7 @@ export default function ProductEditCard({
                     img_url: uploadedImageURL,
                 }),
             };
+
             let res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_ENDPOINT}/products?` +
                     new URLSearchParams({
@@ -78,6 +83,9 @@ export default function ProductEditCard({
                     }),
                 requestOptions
             );
+            if (res) {
+                setResMessage("Product successfully updated");
+            }
         }
     };
     return (
@@ -127,16 +135,24 @@ export default function ProductEditCard({
                     className="w-96 px-3 py-2 rounded-md border"
                     placeholder={newTitle}
                     value={newTitle}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => {
+                        setResMessage("");
+                        setTitle(e.target.value);
+                    }}
                 ></input>
-                {/* <h1 className="text-xl">{title}</h1> */}
                 <label className="text-m">SKU</label>
                 <input
                     className="w-96 px-3 py-2 rounded-md border"
                     placeholder={newSku}
                     value={newSku}
-                    onChange={(e) => setSku(e.target.value)}
+                    onChange={(e) => {
+                        setResMessage("");
+                        setSku(e.target.value);
+                    }}
                 ></input>
+                {resMessage == "" ? null : (
+                    <p className="text-green-500">{resMessage}</p>
+                )}
                 <div className="flex flex-row gap-2 mt-6">
                     <button
                         className="w-auto bg-blue-600 text-sm text-white px-5 py-1 rounded-md hover:bg-blue-500 hover:drop-shadow-md duration-100 ease-in"

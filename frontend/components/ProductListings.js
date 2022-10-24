@@ -36,7 +36,6 @@ export default function ProductListings() {
     useEffect(() => {
         async function fetchInitialProducts() {
             let retrievedProducts = await fetchProducts();
-            retrievedProducts.reverse();
             setProducts(retrievedProducts);
         }
         fetchInitialProducts();
