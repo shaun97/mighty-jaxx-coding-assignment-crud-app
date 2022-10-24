@@ -17,6 +17,7 @@ export default function ProductEditCard({
     const [images, setImages] = useState([]);
     const [newTitle, setTitle] = useState(title);
     const [newSku, setSku] = useState(sku);
+    const [isPicUploading, setIsPicUploading] = useState(false);
     const [newImg_url, setImg_url] = useState(img_url);
     const [resMessage, setResMessage] = useState("");
     const { token } = useContext(UserContext);
@@ -32,6 +33,7 @@ export default function ProductEditCard({
         const imageRef = ref(storage, `${newSku}-cover.jpg`);
         let uploadedImageURL = newImg_url;
         if (images.length > 0) {
+            setIsPicUploading(true);
             let img = images[0];
             // store image
             await uploadBytes(imageRef, img.file).then(async (snapshot) => {
@@ -40,6 +42,8 @@ export default function ProductEditCard({
                     uploadedImageURL = downloadURL;
                 });
             });
+            setIsPicUploading(false);
+            setResMessage("Image uploaded");
         }
 
         if (action == "ADD") {
@@ -158,6 +162,7 @@ export default function ProductEditCard({
                     <button
                         className="w-auto bg-blue-600 text-sm text-white px-5 py-1 rounded-md hover:bg-blue-500 hover:drop-shadow-md duration-100 ease-in"
                         onClick={handleSave}
+                        disabled={isPicUploading}
                     >
                         Save
                     </button>
