@@ -24,6 +24,7 @@ export default function ProductEditCard({
     const storage = getStorage(clientApp);
     const onChange = (imageList, addUpdateIndex) => {
         setImages(imageList);
+        setResMessage("");
         setImg_url(imageList[0].data_url);
     };
     const handleSave = async () => {
