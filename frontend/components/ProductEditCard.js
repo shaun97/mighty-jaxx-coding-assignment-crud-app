@@ -46,19 +46,20 @@ export default function ProductEditCard({
             setResMessage("Image uploaded");
         }
 
+        const requestOptions = {
+            method: action == "ADD" ? "POST" : "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+            body: JSON.stringify({
+                sku: newSku,
+                title: newTitle,
+                img_url: uploadedImageURL,
+            }),
+        };
+
         if (action == "ADD") {
-            const requestOptions = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-                body: JSON.stringify({
-                    sku: newSku,
-                    title: newTitle,
-                    img_url: uploadedImageURL,
-                }),
-            };
             let res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_ENDPOINT}/products`,
                 requestOptions
@@ -68,18 +69,6 @@ export default function ProductEditCard({
             }
             setIsEdit(false);
         } else {
-            const requestOptions = {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-                body: JSON.stringify({
-                    sku: newSku,
-                    title: newTitle,
-                    img_url: uploadedImageURL,
-                }),
-            };
             let res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_ENDPOINT}/products?` +
                     new URLSearchParams({
@@ -99,17 +88,7 @@ export default function ProductEditCard({
                 onChange={onChange}
                 dataURLKey="data_url"
             >
-                {({
-                    imageList,
-                    onImageUpload,
-                    onImageRemoveAll,
-                    onImageUpdate,
-                    onImageRemove,
-                    isDragging,
-                    dragProps,
-                }) => (
-                    // write your building UI
-
+                {({ onImageUpload, isDragging, dragProps }) => (
                     <div className="upload__image-wrapper">
                         <button
                             className="flex flex-col items-center"

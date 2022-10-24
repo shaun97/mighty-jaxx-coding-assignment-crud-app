@@ -65,14 +65,22 @@ exports.loginUser = async (req, res) => {
 
         // check if email and password exist
         if (!email || !password) {
-            throw "Please input email and password";
+            res.status(400).json({
+                status: "fail",
+                message: "Please input email or password",
+            });
+            return;
         }
 
         // check if user exist and password correct
         const user = await User.findOne({ email: email });
 
         if (!user || !(await user.checkPassword(password))) {
-            throw "Incorrect email or password";
+            res.status(403).json({
+                status: "fail",
+                message: "Incorrect email or password",
+            });
+            return;
         }
 
         const token = signToken(user._id);

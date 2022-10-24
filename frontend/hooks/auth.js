@@ -1,4 +1,4 @@
-import { useState, createContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 export const UserContext = createContext();
 export const DispatchContext = createContext();
@@ -51,7 +51,7 @@ export const AuthReducer = (initialState, action) => {
                 email: "" || email,
                 token: "" || token,
                 loading: false,
-                errorMessage: null,
+                errorMessage: action.error,
                 successMessage: null,
             };
     }
@@ -74,8 +74,8 @@ export const login = async (dispatch, loginPayload) => {
                 }),
             requestOptions
         );
-        let data = await response.json();
 
+        let data = await response.json();
         if (data.token) {
             dispatch({
                 type: "LOGIN_SUCCESS",
